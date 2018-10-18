@@ -2,16 +2,12 @@ struct song_node * insert_front(struct song_node *head, char[] nombre, char[] ar
   struct song_node *n;
   n->name = nombre;
   n->artist = artista;
-  //int x = ((insertee->name)[0]) - 'a';
-  //data += x;
   n->next = *head;
   head = n;
   return *head;
 }
 
 struct song_node * insert_ordered(struct song_node *head, struct song_node *insertee){
-  //int x = ((insertee->name)[0]) - 'a';
-  //data += x;
   while(strcmp(insertee->artist, head->artist) > 0 ) {
     head = head->next;
   }
@@ -24,9 +20,12 @@ struct song_node * insert_ordered(struct song_node *head, struct song_node *inse
 }
 
 int print_list(struct song_node *head){
-  while(head->next){
+  while(head){
     printf("%s : %s |", head->artist, head->name);
+    head = head->next;
   }
   return 0;
 }
 
+struct song_node * random_node(struct song_node *head){
+  
