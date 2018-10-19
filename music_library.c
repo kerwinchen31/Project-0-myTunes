@@ -69,8 +69,8 @@ void shuffle() {
 	int i = 27;
 	while (i) {
 		int rando = rand() % 27;
-		if (random_node(table[rando])) {
-			struct song_node randoo = random_node(table[rando]);
+		if (random_node(data[rando])) {
+			struct song_node randoo = random_node(data[rando]);
 			printf("%s by %s\n", randoo->song, randoo->artist );
 			i--;
 		}
@@ -83,3 +83,15 @@ void delete_song(char *song, char *artist) {
 		letter = 26;
 	}
 	struct song_node head = data[letter];
+	remove_node(head, song, artist);
+}
+
+void clear() {
+	int i = 27;
+	while (i) {
+		free_list(data[i]);
+		data[i] = NULL;
+		i--;
+	}
+}
+	

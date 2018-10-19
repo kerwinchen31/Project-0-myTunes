@@ -22,6 +22,3 @@ void delete_song(char *song, char *artist);
 void clear();
 
 #endif
-
-
-#endif 
