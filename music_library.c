@@ -45,5 +45,34 @@ void print_under_letter(char letter) {
 
 void print_under_artist(char *artist) {
 	struct node *head = find_artist(artist)
-	while (head)
+	while (head) {
+		if (!strcmp(head->artist, artist)) {
+			printf("%s by %s\n",head->song, head->artist );
+		}
+		p = p->next;
+	}
+}
+
+void print_all() {
+	int i = 27;
+	while (i) {
+		if (data[27-i]) {
+			printf("Starting with %c\n", 27 - i + 'a' );
+			print_list(data[27-i]);
+		}
+		i--;
+	}
+}
+
+void shuffle() {
+	srand(time(NULL));
+	int i = 27;
+	while (i) {
+		int rando = rand() % 27;
+		if (random_node(table[rando])) {
+			struct song_node randoo = random_node(table[rando]);
+			printf("%s by %s\n", randoo->song, randoo->artist );
+			i--;
+		}
+	}
 }
