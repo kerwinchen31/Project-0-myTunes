@@ -4,14 +4,14 @@
 #include "music_library.h"
 
 int main() {
-  struct song_node *lib[27];
-  int i;
-  char c = 'a';
-  for (i = 0; i < 27; i++){
+  char c;
+  for (c = 'a'; c < 'z'; c++){
+    add_song("hello", "adele");
+    /*
     struct song_node *node = NULL;
     node = insert_front(node, c, c);
     lib[i] = node;
-    a++;
+    a++;*/
   }
 
   

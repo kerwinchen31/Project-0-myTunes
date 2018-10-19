@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include "linked_list.h"
-#include "library.h"
+#include "music_library.h"
 
 void add_song(char *song, char *artist) {
 	int letter = artist[0] - 'a';
