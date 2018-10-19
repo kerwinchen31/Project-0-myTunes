@@ -10,7 +10,7 @@ void add_song(char *song, char *artist) {
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
 	}
-	struct song_node head = data[letter];
+	struct song_node *head = data[letter];
 	data[letter] = insert_ordered(head, song, artist);
 }
 
@@ -19,7 +19,7 @@ struct node *find_song(char *song, char *artist) {
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
 	}
-	struct song_node head = data[letter];
+	struct song_node *head = data[letter];
 	return find_node(head, song, artist);
 }
 
@@ -28,7 +28,7 @@ struct node *find_artist(char *artist) {
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
 	}
-	struct song_node head = data[letter];
+	struct song_node *head = data[letter];
 	while (head) {
 		if (!strcmp(artist, head->artist) && !strcmp(song, head->song) ) {
 			return head;
@@ -70,7 +70,7 @@ void shuffle() {
 	while (i) {
 		int rando = rand() % 27;
 		if (random_node(data[rando])) {
-			struct song_node randoo = random_node(data[rando]);
+			struct song_node *randoo = random_node(data[rando]);
 			printf("%s by %s\n", randoo->song, randoo->artist );
 			i--;
 		}
@@ -82,7 +82,7 @@ void delete_song(char *song, char *artist) {
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
 	}
-	struct song_node head = data[letter];
+	struct song_node *head = data[letter];
 	remove_node(head, song, artist);
 }
 
