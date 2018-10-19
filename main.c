@@ -30,8 +30,8 @@ int main() {
   //free_list(head);
   //print_list(head);
 
-
-  add_song("kiss","kay");
+  struct song_node * table[27];
+  add_song(table, "kiss","kay");
   //find_song("kiss","kay");
   return 0;
 }
