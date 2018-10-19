@@ -44,12 +44,12 @@ void print_under_letter(char letter) {
 }
 
 void print_under_artist(char *artist) {
-	struct node *head = find_artist(artist)
+	struct node *head = find_artist(artist);
 	while (head) {
 		if (!strcmp(head->artist, artist)) {
 			printf("%s by %s\n",head->song, head->artist );
 		}
-		p = p->next;
+		head = head->next;
 	}
 }
 
