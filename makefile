@@ -1,5 +1,5 @@
 all: main.o linked_list.o music_library.o
-	gcc driver.o linked_list.o music_library.o
+	gcc main.o linked_list.o music_library.o
 
 
 main.o: main.c linked_list.h music_library.h
