@@ -1,7 +1,7 @@
 #ifndef MUSIC_LIBRARY_H
 #define MUSIC_LIBRARY_H
 
-struct node *data[27];
+struct song_node *data[27];
 
 void add_song(char *song, char *artist);
 
