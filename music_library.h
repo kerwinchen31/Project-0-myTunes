@@ -1,24 +1,22 @@
 #ifndef MUSIC_LIBRARY_H
 #define MUSIC_LIBRARY_H
 
-struct song_node *data[27];
+void add_song(struct song_node *data, char *song, char *artist);
 
-void add_song(char *song, char *artist);
+struct node* find_song(struct song_node *data, char *song, char *artist);
 
-struct node* find_song(char *song, char *artist);
+struct node* find_artist(struct song_node *data, char *artist);
 
-struct node* find_artist(char *artist);
+void print_under_letter(struct song_node *data, char letter);
 
-void print_under_letter(char letter);
+void print_under_artist(struct song_node *data, char *artist);
 
-void print_under_artist(char *artist);
+void print_all(struct song_node *data);
 
-void print_all();
+void shuffle(struct song_node *data);
 
-void shuffle();
+void delete_song(struct song_node *data, char *song, char *artist);
 
-void delete_song(char *song, char *artist);
-
-void clear();
+void clear(struct song_node *data);
 
 #endif

@@ -5,7 +5,7 @@
 #include "linked_list.h"
 #include "music_library.h"
 
-void add_song(char *song, char *artist) {
+void add_song(struct song_node *data, char *song, char *artist) {
 	int letter = artist[0] - 'a';
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
@@ -14,7 +14,7 @@ void add_song(char *song, char *artist) {
 	data[letter] = insert_ordered(head, song, artist);
 }
 
-struct node *find_song(char *song, char *artist) {
+struct node *find_song(struct song_node *data, char *song, char *artist) {
 	int letter = artist[0] - 'a';
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
@@ -23,7 +23,7 @@ struct node *find_song(char *song, char *artist) {
 	return find_node(head, song, artist);
 }
 
-struct node *find_artist(char *artist) {
+struct node *find_artist(struct song_node *data, char *artist) {
 	int letter = artist[0] - 'a';
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
@@ -38,12 +38,12 @@ struct node *find_artist(char *artist) {
 	return NULL;
 }
 
-void print_under_letter(char letter) {
+void print_under_letter(struct song_node *data, char letter) {
 	printf("Starting with %c\n", letter );
 	print_list(data[letter - 'a']);
 }
 
-void print_under_artist(char *artist) {
+void print_under_artist(struct song_node *data, char *artist) {
 	struct song_node *head = find_artist(artist);
 	while (head) {
 		if (!strcmp(head->artist, artist)) {
@@ -53,7 +53,7 @@ void print_under_artist(char *artist) {
 	}
 }
 
-void print_all() {
+void print_all(struct song_node *data) {
 	int i = 27;
 	while (i) {
 		if (data[27-i]) {
@@ -64,7 +64,7 @@ void print_all() {
 	}
 }
 
-void shuffle() {
+void shuffle(struct song_node *data) {
 	srand(time(NULL));
 	int i = 27;
 	while (i) {
@@ -77,7 +77,7 @@ void shuffle() {
 	}
 }
 
-void delete_song(char *song, char *artist) {
+void delete_song(struct song_node *data, char *song, char *artist) {
 	int letter = artist[0] - 'a';
 	if (letter >= 27 || letter < 0) {
 		letter = 26;
@@ -86,7 +86,7 @@ void delete_song(char *song, char *artist) {
 	remove_node(head, song, artist);
 }
 
-void clear() {
+void clear(struct song_node *data) {
 	int i = 27;
 	while (i) {
 		free_list(data[i]);
