@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <time.h>
 #include "linked_list.h"
 #include "music_library.h"
 
@@ -13,10 +15,23 @@ int main() {
     lib[i] = node;
     a++;*/
   //}
-  struct song_node *head = insert_ordered(NULL, "sober", "big bang");
-  head = insert_ordered(head, "hello", "adele");
-  head = insert_ordered(head, "baby", "justin beiber");
+  struct song_node *head = insert_front(NULL, "baby", "justin beiber");
+  head = insert_front(head, "sober", "big bang");
+  head = insert_front(head, "hello", "adele");
+  printf("added 3 songs:\n");
   print_list(head);
 
+  //find_node(head, "hello", "adele");
+  //random_node(head);
+  printf("\nremove sober by big bang:\n");
+  remove_node(head, "sober", "big bang");
+  print_list(head);
+  //printf("\nfreeing list\n");
+  //free_list(head);
+  //print_list(head);
+
+
+  add_song("kiss","kay");
+  //find_song("kiss","kay");
   return 0;
 }

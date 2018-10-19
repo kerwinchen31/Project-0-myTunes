@@ -69,27 +69,41 @@ struct song_node * random_node(struct song_node *head) {
 	return head;
 }
 
-struct song_node * remove_node(struct song_node *head, char *song, char *artist) {
-	struct song_node *temp = head; 
-	if ( !strcmp(head->song, song) && !strcmp(head->artist, artist) ) {
-		temp = head;
-		free(head);
-		head = NULL;
-		head = temp->next;
-	}
-	else { 
-		while(head->next) { 
-			if ( !strcmp((head->next)->song, song) && !strcmp((head->next)->artist, artist) ) {
-				temp = head->next;
-				free(head->next); 
-				head->next = (temp->next)->next;
-			}
-			head = head->next; 
-		}
-	}
-	return head;
-}
 
+struct song_node *remove_node(struct song_node *head, char *song, char *artist) {
+  struct song_node *first = head; 
+  if (head && !strcmp(head->artist, artist) && !strcmp(head->song, song)) {
+    head = head->next;
+    free(first);
+    return head;
+  }
+  struct song_node *temp = head; 
+  struct song_node *more_back = head;
+  while (temp) {
+    if (strcmp(temp->artist, artist) || strcmp(temp->song, song)) {
+      more_back = temp;
+      temp = temp->next;
+    } 
+    else {
+      break;
+    }
+  }
+  if (temp) {
+    if (!(temp->next)) {
+      more_back->next = NULL;
+      free(temp);
+      temp = NULL;
+    } 
+    else {
+      more_back->next = temp->next;
+    }
+  } 
+  else {
+    printf("%s by %s doesn't exist\n", song, artist);
+  }
+  return head;
+}
+/*
 struct song_node * free_list(struct song_node *head) {
 	struct song_node *temp; 
 	while (head) {
@@ -100,3 +114,29 @@ struct song_node * free_list(struct song_node *head) {
 	}
 	return head;
 }
+*/
+
+struct song_node * free_list(struct song_node *head) {
+	struct song_node *temp; 
+	while (head) {
+		temp = head; 
+		head = head->next;
+		free(temp);
+		temp = NULL;
+	}
+	return head;
+	}/*
+struct song_node * free_list(struct song_node *head) {
+  struct song_node *temp; 
+  while (head) {
+    temp = head; 
+    head->song = NULL;
+    head->artist = NULL;
+    head->next = NULL;
+    head = NULL;
+    free(head);
+    head = temp->next;
+  }
+  return head;
+}
+	   */
