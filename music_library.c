@@ -76,3 +76,10 @@ void shuffle() {
 		}
 	}
 }
+
+void delete_song(char *song, char *artist) {
+	int letter = artist[0] - 'a';
+	if (letter >= 27 || letter < 0) {
+		letter = 26;
+	}
+	struct song_node head = data[letter];
