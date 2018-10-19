@@ -30,7 +30,7 @@ struct node *find_artist(char *artist) {
 	}
 	struct song_node *head = data[letter];
 	while (head) {
-		if (!strcmp(artist, head->artist) && !strcmp(song, head->song) ) {
+		if (!strcmp(artist, head->artist) ) {
 			return head;
 		}
 		head = head->next;
@@ -44,7 +44,7 @@ void print_under_letter(char letter) {
 }
 
 void print_under_artist(char *artist) {
-	struct node *head = find_artist(artist);
+	struct song_node *head = find_artist(artist);
 	while (head) {
 		if (!strcmp(head->artist, artist)) {
 			printf("%s by %s\n",head->song, head->artist );
